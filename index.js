@@ -12,8 +12,93 @@ const cors = require('cors');
 app.use(express.static('public'));
 app.use(cors());
 
+db.defaults(
+{
+    accounts: [
+        {
+            name: '', 
+            email: '',
+            password: '',
+            data: {
+                entries: [
+                    {
+                    timestamp: '',
+                    answer: {
+                        answer1: '',
+                        answer2: '',
+                        answer3: ''
+                    }, 
+                    emojis: '',
+                }
+                ]
+            }
 
+        }
+    ]    
+}
+).write();
 
+app.get('/account/create/:name/:email/:password', function (req, res) {
+
+    // YOUR CODE
+    // Create account route
+    // return success or failure string
+    var msg ='';
+            
+    var account = db.get ('accounts')
+     .find ({email: req.params.email})
+     .value();
+       
+    if (account){
+        msg ='Account Already Exists!';
+        res.send(null);
+    }
+    else{
+        db.get ('accounts')
+         .push(
+            {    name    : req.params.name,
+                 email    : req.params.email,
+                 password : req.params.password,
+                 balance  : 0,
+                 transactions : []
+            })
+         .write ();
+         msg ='Account Created!';
+         res.send(msg);    
+    }
+        console.log (msg); 
+});
+
+app.get('/account/login/:email/:password', function (req, res) {
+
+    // YOUR CODE
+    // Login user - confirm credentials
+    // If success, return account object    
+    // If fail, return null
+    var account = db.get ('accounts')
+    .find ({email:req.params.email})
+    .value();
+ 
+ if (account){
+        if (account.password==req.params.password){
+            account.transactions.push(audit('login',0));
+            res.send(account);
+            console.log(account);
+        }
+        else{
+        res.send(null);
+        console.log('Incorrect Password!');
+        }
+    }
+
+ else {
+    res.send(null);
+    console.log('Account not Found!');
+   }
+
+});
+
+app.get('/journal/:a1')
 
 
 app.listen(3000, function(){
