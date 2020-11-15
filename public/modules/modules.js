@@ -77,12 +77,6 @@ ui.journal = `
 <div class="card text-white bg-danger mb-3" style="max-width: 30rem;">
 <div class="card-header">Journal Entry</div>
 <div class="card-body">
-    <form>
-    <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-    </div>
-    </form>
     <div>
     <h3>
         Please reflect on the following questions, and write about your day. <br>
