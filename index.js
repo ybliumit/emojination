@@ -70,6 +70,8 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
                         }, 
                         emojis: '',
                     }
+                    ]
+                }
             })
          .write ();
          msg ='Account Created!';
@@ -90,7 +92,6 @@ app.get('/account/login/:email/:password', function (req, res) {
  
  if (account){
         if (account.password==req.params.password){
-            account.transactions.push(audit('login',0));
             res.send(account);
             console.log(account);
         }
@@ -108,9 +109,23 @@ app.get('/account/login/:email/:password', function (req, res) {
 });
 
 app.get('account/journal/:email/:a1', function(req,res){
-    var input1 = req.params.a1;
-    console.log(input1);
-    res.send(input1);
+    var a1 = req.params.a1;
+    console.log(a1);
+    res.send(null);
+
+    var account = db.get ('accounts')
+        .find ({email: req.params.email})
+        .value();
+    
+    if (account) {
+        console.log(a1);
+        res.send(account);
+    }
+
+    else {
+        console.log('Account Not Found!');
+        res.send(null);
+    }
 
 })
 

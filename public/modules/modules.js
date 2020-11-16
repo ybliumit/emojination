@@ -78,12 +78,6 @@ ui.journal = `
 <div class="card-header">Journal Entry</div>
 <div class="card-body">
     <div>
-    <form>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
-        </div>
-    </form>
     <h3>
         Please reflect on the following questions, and write about your day. <br>
     </h3>
@@ -93,11 +87,19 @@ ui.journal = `
         3. What didn't go well today? <br>
     </body>
     </div>
+
     <form>
-    <textarea id="a1" name="answer1" rows="4" cols="57" placeholder="Please keep your answers brief. No more than 280 characters."></textarea>
-    <br>
-    <input type="submit" value="Submit">
+        <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
+        </div>
+        <div class="form-group">
+        <textarea id="a1" name="a1" rows="4" cols="57" placeholder="Please keep your answers brief. No more than 280 characters."></textarea>
+        <br>
+        </div>
+        <button type="button" class="btn btn-light" onclick="journal()">Submit!</button>
     </form>
+    
     <div>
     <b style="font-size:60px;">
     &#128512  &#128525  &#128526 </b>

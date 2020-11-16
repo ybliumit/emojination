@@ -1,0 +1,40 @@
+{
+  "accounts": [
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "data": {
+        "entries": [
+          {
+            "timestamp": "",
+            "answer": {
+              "answer1": "",
+              "answer2": "",
+              "answer3": ""
+            },
+            "emojis": ""
+          }
+        ]
+      }
+    },
+    {
+      "name": "Yuanbo",
+      "email": "yuanbo@mit.edu",
+      "password": "password",
+      "data": {
+        "entries": [
+          {
+            "timestamp": "",
+            "answer": {
+              "answer1": "",
+              "answer2": "",
+              "answer3": ""
+            },
+            "emojis": ""
+          }
+        ]
+      }
+    }
+  ]
+}

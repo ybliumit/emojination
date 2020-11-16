@@ -82,34 +82,53 @@ if (email != null && password != null && email != '' && password != '')
     }
 }
 
-function journalEntry() {
+function journal() {
+    // -------------------------------------
+    //  YOUR CODE
+    //  Deposit funds user funds on server
+    // -------------------------------------
     var email   = document.getElementById('email').value;
-    var amount  = document.getElementById('a1').value;
+    var a1  = document.getElementById('a1').value;
+    var status  = document.getElementById('status');
     var url     = '/account/journal/'+ email + '/' + a1;
-     superagent
+
+if (email != null && a1 != null && email != '' && a1 != '')
+{
+
+    superagent
         .get (url)
         .end (function (err, res)
         {
             if (err) 
             {
                 console.log (err);
+                status.innerHTML ='Request Failed!';
             }
             else
             {
                 if (res.body)
                 {
+
                     console.log (res.body);
-                    status.innerHTML = JSON.stringify(res.body);
-                   
+                    status.innerHTML = a1;
+                    setTimeout(function(){status.innerHTML='';},3000);   
+
                 }
                 else
                 {
-                    console.log ('No Data!');
-                    status.innerHTML ='No Data!';
-                   
-                } 
 
+                     console.log ('Failed!');
+                     status.innerHTML ='Failed!';
+                     setTimeout(function(){status.innerHTML='';},3000);
+               
+                }
             }
-             
+
         });
+}
+else 
+    {
+        status.innerHTML = 'Email and Answer Fields are required';
+        setTimeout(function(){status.innerHTML ='';},3000);
+    }
 }
