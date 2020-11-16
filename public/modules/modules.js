@@ -78,6 +78,12 @@ ui.journal = `
 <div class="card-header">Journal Entry</div>
 <div class="card-body">
     <div>
+    <form>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
+        </div>
+    </form>
     <h3>
         Please reflect on the following questions, and write about your day. <br>
     </h3>

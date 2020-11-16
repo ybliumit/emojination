@@ -59,8 +59,17 @@ app.get('/account/create/:name/:email/:password', function (req, res) {
             {    name    : req.params.name,
                  email    : req.params.email,
                  password : req.params.password,
-                 balance  : 0,
-                 transactions : []
+                 data: {
+                    entries: [
+                        {
+                        timestamp: '',
+                        answer: {
+                            answer1: '',
+                            answer2: '',
+                            answer3: ''
+                        }, 
+                        emojis: '',
+                    }
             })
          .write ();
          msg ='Account Created!';
@@ -98,9 +107,17 @@ app.get('/account/login/:email/:password', function (req, res) {
 
 });
 
-app.get('/journal/:a1')
+app.get('account/journal/:email/:a1', function(req,res){
+    var input1 = req.params.a1;
+    console.log(input1);
+    res.send(input1);
+
+})
+
+
+
 
 
 app.listen(3000, function(){
-    console.log('Bad Bank 1.125 Branch running on port 3000!')
+    console.log('Emojo running on port 3000!')
  })
